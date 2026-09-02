@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بالمِيثاق نُبلّغ الآفاق - الصف السادس</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, rgba(245, 243, 239, 0.95), rgba(235, 228, 218, 0.98)), 
+                        url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+        .cinematic-glass {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(138, 28, 36, 0.3);
+            box-shadow: 0 25px 40px -5px rgba(0, 0, 0, 0.15), 0 0 25px rgba(138, 28, 36, 0.1);
+        }
+        @keyframes pulse-burgundy {
+            0%, 100% { border-color: rgba(138, 28, 36, 0.4); }
+            50% { border-color: rgba(138, 28, 36, 0.95); box-shadow: 0 0 25px rgba(138, 28, 36, 0.3); }
+        }
+        .active-station {
+            animation: pulse-burgundy 2s infinite;
+        }
+        .burgundy-badge {
+            background: linear-gradient(135deg, #8a1c24 0%, #5c1218 100%);
+            color: #ffffff;
+        }
+        .race-track {
+            background: #f1f5f9;
+            position: relative;
+            height: 120px;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 2px dashed rgba(138, 28, 36, 0.4);
+        }
+        .race-car {
+            position: absolute;
+            bottom: 35px;
+            left: 10px;
+            transition: left 0.5s ease;
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body class="p-3 sm:p-6 flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="max-w-6xl mx-auto w-full cinematic-glass rounded-2xl p-4 mb-4 flex flex-wrap justify-between items-center gap-4 border-t-4 border-[#8a1c24]">
+        <div class="flex items-center gap-3">
+            <div class="w-14 h-14 rounded-xl overflow-hidden border border-[#8a1c24]/30 shadow-md flex items-center justify-center bg-white p-1">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_United_Arab_Emirates.svg" alt="علم دولة الإمارات العربية المتحدة" class="w-full h-full object-cover rounded-lg">
+            </div>
+            <div>
+                <div class="text-[10px] font-bold text-[#8a1c24]">ميثاق التعليم الوطني • وزارة التربية والتعليم</div>
+                <h1 class="text-xs sm:text-sm font-bold text-slate-800">مجمع زايد التعليمي - السيوح</h1>
+                <h2 class="text-sm sm:text-base font-black text-[#8a1c24]">بالمِيثاق نُبلّغ الآفاق (سباق وكرة قدم) • الصف السادس</h2>
+                <p class="text-[10px] text-slate-500">إشراف المديرة: أ. سعيدة الحمادي | تصميم (MIE): أ. علاء محمد أبوالحمد</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3 text-xs sm:text-sm">
+            <div class="bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 flex items-center gap-1.5">
+                <span>👤 البطل:</span>
+                <span id="headerName" class="font-bold text-[#8a1c24]">المستكشف</span>
+            </div>
+            <div class="bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 flex items-center gap-1.5">
+                <span>⭐ النقاط:</span>
+                <span id="headerScore" class="font-bold text-[#8a1c24]">0</span>
+            </div>
+            <div class="bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 flex items-center gap-1.5">
+                <span>💡 تلميحات:</span>
+                <span id="headerHints" class="font-bold text-[#8a1c24]">3</span>
+            </div>
+            <div class="bg-[#8a1c24]/10 px-3 py-1.5 rounded-xl border border-[#8a1c24]/30 text-[#8a1c24] font-bold text-[11px]">
+                بالمِيثاق نُبلّغ الآفاق 🏛️
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto w-full flex-grow flex items-center justify-center">
+
+        <!-- Welcome Screen -->
+        <div id="screen-welcome" class="cinematic-glass rounded-3xl p-6 sm:p-10 w-full text-center max-w-3xl">
+            <div class="inline-block p-2 rounded-2xl bg-[#8a1c24]/10 border border-[#8a1c24]/30 mb-3 shadow-lg overflow-hidden w-28 h-20 mx-auto">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_United_Arab_Emirates.svg" alt="علم دولة الإمارات العربية المتحدة" class="w-full h-full object-cover rounded-xl">
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-[#8a1c24] mb-2">بالمِيثاق نُبلّغ الآفاق — تحدّي سورة السجدة والبعث</h2>
+            <p class="text-xs text-slate-600 font-bold mb-2">سورة السجدة • الصف السادس • مجمع زايد التعليمي السيوح</p>
+            <p class="text-[11px] text-[#8a1c24] tracking-wide mb-4 font-extrabold bg-[#8a1c24]/10 py-1.5 px-4 rounded-lg border border-[#8a1c24]/20 inline-block">
+                ✨ بالمِيثاق نُبلّغ الآفاق ✨
+            </p>
+
+            <!-- Custom User Uploaded Visual Banner Integration -->
+            <div class="my-4 rounded-2xl overflow-hidden border border-[#8a1c24]/30 shadow-lg max-w-xl mx-auto bg-white p-2">
+                <div class="h-44 rounded-xl overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="ملامح المتعلم في دولة الإمارات" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-3">
+                        <span class="text-white text-xs font-bold">🇦🇪 نحو تعليم يرسخ الهوية الوطنية ويسبر أفاق المعرفة</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5 space-y-3 text-right max-w-md mx-auto">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">اسم البطل / الطالب:</label>
+                    <input type="text" id="inputStudentName" placeholder="مثال: راشد محمد" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-[#8a1c24] font-bold shadow-inner">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">الصف والشعبة:</label>
+                    <input type="text" id="inputStudentClass" placeholder="مثال: السادس / أ" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-[#8a1c24] font-bold shadow-inner">
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3">
+                <button onclick="startGame()" class="bg-gradient-to-r from-[#8a1c24] to-[#5c1218] hover:from-[#72171e] hover:to-[#4a0f13] text-white font-black px-8 py-3 rounded-xl shadow-lg transition transform hover:scale-105">
+                    ▶ ابدأ مغامرة بالمِيثاق نُبلّغ الآفاق
+                </button>
+                <button onclick="showTeacherDashboard()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-5 py-3 rounded-xl border border-slate-300 transition">
+                    👨‍🏫 لوحة المعلم وسجل الطلاب
+                </button>
+            </div>
+        </div>
+
+        <!-- Adventure Map -->
+        <div id="screen-map" class="cinematic-glass rounded-3xl p-6 sm:p-8 w-full hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-black text-[#8a1c24]">🗺️ خريطة المغامرة (سباق السيارات وكرة القدم)</h2>
+                    <p class="text-xs text-slate-600">مجمع زايد التعليمي - السيوح | اختر المحطة التالية لخوض التحدي</p>
+                </div>
+                <button onclick="showTeacherDashboard()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 px-3 py-2 rounded-xl text-xs border border-slate-300 font-bold">
+                    👨‍🏫 السجل
+                </button>
+            </div>
+
+            <div class="w-full bg-slate-200 rounded-full h-3 mb-6 border border-slate-300 overflow-hidden">
+                <div id="mapProgressBar" class="bg-gradient-to-r from-[#8a1c24] to-[#a3222b] h-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                <div id="stationCard-1" onclick="enterStation(1)" class="bg-white border border-slate-200 hover:border-[#8a1c24] p-4 rounded-2xl cursor-pointer transition relative group active-station shadow-md">
+                    <span class="text-xs text-[#8a1c24] font-bold">المحطة 1</span>
+                    <h3 class="text-base font-bold text-slate-800 mt-1">🏎️ سباق سورة السجدة</h3>
+                    <p class="text-xs text-slate-500 mt-1">أجب لتنطلق السيارة وتتقدم في السباق.</p>
+                    <span id="status-1" class="text-xs text-[#8a1c24] font-bold mt-3 block">متاحة 🔓</span>
+                </div>
+
+                <div id="stationCard-2" onclick="enterStation(2)" class="bg-white border border-slate-200 hover:border-[#8a1c24] p-4 rounded-2xl cursor-pointer transition relative group opacity-60 shadow-md">
+                    <span class="text-xs text-[#8a1c24] font-bold">المحطة 2</span>
+                    <h3 class="text-base font-bold text-slate-800 mt-1">⚽ ركلة حسم سورة السجدة</h3>
+                    <p class="text-xs text-slate-500 mt-1">سدد الكرة في الشباك بالإجابة الصحيحة.</p>
+                    <span id="status-2" class="text-xs text-slate-500 font-bold mt-3 block">مغلقة 🔒</span>
+                </div>
+
+                <div id="stationCard-3" onclick="enterStation(3)" class="bg-white border border-slate-200 hover:border-[#8a1c24] p-4 rounded-2xl cursor-pointer transition relative group opacity-60 shadow-md">
+                    <span class="text-xs text-[#8a1c24] font-bold">المحطة 3</span>
+                    <h3 class="text-base font-bold text-slate-800 mt-1">🏎️ سباق خلق الإنسان</h3>
+                    <p class="text-xs text-slate-500 mt-1">تجاوز العوائق المعرفية بسرعة ومهارة.</p>
+                    <span id="status-3" class="text-xs text-slate-500 font-bold mt-3 block">مغلقة 🔒</span>
+                </div>
+
+                <div id="stationCard-4" onclick="enterStation(4)" class="bg-white border border-slate-200 hover:border-[#8a1c24] p-4 rounded-2xl cursor-pointer transition relative group opacity-60 shadow-md">
+                    <span class="text-xs text-[#8a1c24] font-bold">المحطة 4</span>
+                    <h3 class="text-base font-bold text-slate-800 mt-1">⚽ نهائي البعث والقيامة</h3>
+                    <p class="text-xs text-slate-500 mt-1">تحدي ركلات الجزاء الحاسم.</p>
+                    <span id="status-4" class="text-xs text-slate-500 font-bold mt-3 block">مغلقة 🔒</span>
+                </div>
+
+                <div id="stationCard-5" onclick="enterStation(5)" class="bg-white border border-slate-200 hover:border-[#8a1c24] p-4 rounded-2xl cursor-pointer transition relative group opacity-60 shadow-md">
+                    <span class="text-xs text-[#8a1c24] font-bold">المحطة 5</span>
+                    <h3 class="text-base font-bold text-slate-800 mt-1">🧩 لغز الشكر والميثاق</h3>
+                    <p class="text-xs text-slate-500 mt-1">تجميع القطع لفك قفل القلعة.</p>
+                    <span id="status-5" class="text-xs text-slate-500 font-bold mt-3 block">مغلقة 🔒</span>
+                </div>
+
+                <div id="stationCard-6" onclick="enterStation(6)" class="bg-white border border-slate-200 hover:border-[#8a1c24] p-4 rounded-2xl cursor-pointer transition relative group opacity-60 shadow-md">
+                    <span class="text-xs text-[#8a1c24] font-bold">المحطة 6</span>
+                    <h3 class="text-base font-bold text-slate-800 mt-1">🏰 قلعة اليقين الكبرى</h3>
+                    <p class="text-xs text-slate-500 mt-1">فتح الباب النهائي ونيل اللقب.</p>
+                    <span id="status-6" class="text-xs text-slate-500 font-bold mt-3 block">مغلقة 🔒</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex justify-between items-center text-xs">
+                <span class="text-slate-700 font-bold">💡 بالمِيثاق نُبلّغ الآفاق — انطلق الآن في السباق وكرة القدم!</span>
+                <button onclick="showScreen('screen-welcome')" class="text-[#8a1c24] font-bold hover:underline">الخروج للبداية</button>
+            </div>
+        </div>
+
+        <!-- Game Arena -->
+        <div id="screen-game-arena" class="cinematic-glass rounded-3xl p-6 sm:p-8 w-full hidden">
+            <div class="flex justify-between items-center mb-6 border-b border-slate-200 pb-4">
+                <div>
+                    <span id="arenaBadge" class="text-xs font-bold text-[#8a1c24] bg-[#8a1c24]/10 px-3 py-1 rounded-full border border-[#8a1c24]/30">المحطة</span>
+                    <h2 id="arenaTitle" class="text-xl sm:text-2xl font-black text-slate-800 mt-2">عنوان التحدي</h2>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="useHintInGame()" class="bg-[#8a1c24]/10 hover:bg-[#8a1c24]/20 text-[#8a1c24] px-3 py-1.5 rounded-xl text-xs font-bold border border-[#8a1c24]/30">
+                        💡 تلميح متبقي (<span id="hintCountSpan">3</span>)
+                    </button>
+                    <button onclick="returnToMap()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300">
+                        🗺️ الخريطة
+                    </button>
+                </div>
+            </div>
+
+            <div id="stationVisualSimulation" class="mb-6"></div>
+
+            <div id="arenaHintBox" class="hidden mb-4 bg-amber-50 border border-amber-300 text-amber-900 p-3 rounded-xl text-xs">
+                <strong>تلميح المعلم:</strong> <span id="arenaHintText">راجع الآيات الأولى من سورة يس.</span>
+            </div>
+
+            <div id="arenaQuestionBox" class="mb-6">
+                <p id="arenaQuestionText" class="text-sm sm:text-base font-bold text-slate-800 mb-4">جاري التحميل...</p>
+                <div id="arenaOptionsContainer" class="space-y-3"></div>
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t border-slate-200">
+                <span id="arenaProgress" class="text-xs text-slate-500">السؤال 1 من 3</span>
+                <button id="arenaNextBtn" onclick="nextArenaStep()" class="hidden bg-[#8a1c24] hover:bg-[#72171e] text-white font-bold px-6 py-2 rounded-xl text-xs transition shadow-md">
+                    التالي ➡
+                </button>
+            </div>
+        </div>
+
+        <!-- Castle Final Password -->
+        <div id="screen-castle" class="cinematic-glass rounded-3xl p-6 sm:p-10 w-full text-center max-w-xl hidden">
+            <div class="text-4xl mb-3">🏰</div>
+            <h2 class="text-2xl font-black text-[#8a1c24] mb-2">قلعة الميثاق — القفل النهائي</h2>
+            <p class="text-xs sm:text-sm text-slate-600 mb-6">لقد اجتزت تحديات الميثاق بنجاح! افتح القلعة الختامية لعرض شهادة الإنجاز.</p>
+            
+            <div class="flex justify-center gap-2 mb-6">
+                <input type="text" maxlength="1" class="w-12 h-14 bg-white border border-slate-300 text-center text-2xl font-black text-[#8a1c24] rounded-xl shadow-inner" value="3" readonly>
+                <input type="text" maxlength="1" class="w-12 h-14 bg-white border border-slate-300 text-center text-2xl font-black text-[#8a1c24] rounded-xl shadow-inner" value="6" readonly>
+                <input type="text" maxlength="1" class="w-12 h-14 bg-white border border-slate-300 text-center text-2xl font-black text-[#8a1c24] rounded-xl shadow-inner" value="9" readonly>
+                <input type="text" maxlength="1" class="w-12 h-14 bg-white border border-slate-300 text-center text-2xl font-black text-[#8a1c24] rounded-xl shadow-inner" value="1" readonly>
+                <input type="text" maxlength="1" class="w-12 h-14 bg-white border border-slate-300 text-center text-2xl font-black text-[#8a1c24] rounded-xl shadow-inner" value="4" readonly>
+            </div>
+
+            <button onclick="unlockCastle()" class="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-black px-8 py-3 rounded-xl shadow-lg transition transform hover:scale-105">
+                🔓 فتح شهادة الإنجاز الكبرى
+            </button>
+        </div>
+
+        <!-- Victory & Official Certificate with MoE Logo, Director Name, and MIE Teacher Name -->
+        <div id="screen-victory" class="cinematic-glass rounded-3xl p-6 sm:p-10 w-full text-center max-w-2xl hidden">
+            <div class="text-5xl mb-3">🏆</div>
+            <h2 class="text-2xl sm:text-3xl font-black text-[#8a1c24] mb-2">تهانينا يا بطل السباق وكرة القدم!</h2>
+            <p class="text-sm text-slate-600 mb-6">لقد أتممت جميع تحديات «بالمِيثاق نُبلّغ الآفاق» في مادة التربية الإسلامية بنجاح باهر.</p>
+            
+            <!-- Official Certificate Box -->
+            <div id="certificateBox" class="bg-white border-2 border-[#8a1c24] p-6 rounded-3xl mb-6 text-center space-y-3 relative overflow-hidden shadow-2xl">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-black text-[#8a1c24]">🇦🇪 وزارة التربية والتعليم</span>
+                    </div>
+                    <div class="text-[11px] text-[#8a1c24] font-bold">بالمِيثاق نُبلّغ الآفاق 🏛️</div>
+                </div>
+
+                <h3 class="text-xs font-bold text-[#8a1c24] tracking-widest mt-2">مجمع زايد التعليمي - السيوح</h3>
+                <h4 class="text-lg font-black text-slate-900">شهادة إنجاز وبطولة رسمية</h4>
+                <p class="text-xs text-slate-600">نبرهن بأن الطالب(ة):</p>
+                <p id="certName" class="text-xl font-black text-[#8a1c24]">راشد محمد</p>
+                <p class="text-xs text-slate-600">قد فاز ببطولة السباق وكرة القدم في درس <span class="text-[#8a1c24] font-bold">«سورة السجدة والبعث»</span> للصف الثامن.</p>
+                
+                <div class="flex justify-between items-center pt-3 border-t border-slate-200 text-xs text-slate-700">
+                    <div class="text-right">
+                        <p class="font-bold text-slate-500">مديرة المجمع:</p>
+                        <p class="text-[#8a1c24] font-black">أ. سعيدة الحمادي</p>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-lg font-black text-[#8a1c24]">⭐ <span id="certScore">150</span></span>
+                        <p class="text-[10px] text-slate-400">مجموع النقاط</p>
+                    </div>
+                    <div class="text-left">
+                        <p class="font-bold text-slate-500">إعداد وتصميم (MIE):</p>
+                        <p class="text-[#8a1c24] font-black">أ. علاء محمد أبوالحمد</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="window.print()" class="bg-[#8a1c24] hover:bg-[#72171e] text-white font-bold px-6 py-3 rounded-xl text-xs transition shadow-lg">
+                    🖨️ طباعة الشهادة الرسمية
+                </button>
+                <button onclick="location.reload()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-6 py-3 rounded-xl text-xs transition">
+                    🔄 مغامرة جديدة
+                </button>
+                <button onclick="showTeacherDashboard()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-6 py-3 rounded-xl text-xs transition">
+                    👨‍🏫 لوحة المعلم
+                </button>
+            </div>
+        </div>
+
+        <!-- Teacher Dashboard -->
+        <div id="screen-teacher" class="cinematic-glass rounded-3xl p-6 sm:p-8 w-full hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-xl font-black text-[#8a1c24]">👨‍🏫 لوحة تحكم المعلم التقويمية</h2>
+                    <p class="text-xs text-slate-600">مجمع زايد التعليمي - السيوح | إشراف المديرة: أ. سعيدة الحمادي | تصميم (MIE): أ. علاء محمد أبوالحمد</p>
+                </div>
+                <button onclick="returnToMap()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 px-4 py-2 rounded-xl text-xs border border-slate-300 font-bold">
+                    ← العودة للرئيسية
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center shadow-sm">
+                    <span class="text-xs text-slate-500 block">الطلاب المشاركون</span>
+                    <span id="teacherTotalStudents" class="text-2xl font-black text-[#8a1c24]">4</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center shadow-sm">
+                    <span class="text-xs text-slate-500 block">متوسط النقاط</span>
+                    <span id="teacherAvgScore" class="text-2xl font-black text-emerald-600">135</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center shadow-sm">
+                    <span class="text-xs text-slate-500 block">نسبة الإتقان العامة</span>
+                    <span class="text-2xl font-black text-[#8a1c24]">98%</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-5 border border-slate-200 overflow-x-auto shadow-sm">
+                <table class="w-full text-right text-xs">
+                    <thead>
+                        <tr class="text-[#8a1c24] border-b border-slate-200 pb-3 font-bold">
+                            <th class="p-3">#</th>
+                            <th class="p-3">اسم الطالب / الطالبة</th>
+                            <th class="p-3">الصف</th>
+                            <th class="p-3">النقاط الكلية</th>
+                            <th class="p-3">نسبة الإنجاز</th>
+                            <th class="p-3">المستوى واللقب</th>
+                        </tr>
+                    </thead>
+                    <tbody id="teacherTableBody" class="text-slate-700"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal -->
+    <div id="customModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden z-50">
+        <div class="cinematic-glass rounded-2xl p-6 max-w-sm w-full text-center border border-[#8a1c24]">
+            <div id="modalIcon" class="text-3xl mb-2">🌟</div>
+            <h3 id="modalTitle" class="text-lg font-black text-[#8a1c24] mb-2">تنبيه</h3>
+            <p id="modalMessage" class="text-xs text-slate-700 mb-6">رسالة التوجيه.</p>
+            <button onclick="closeModal()" class="bg-[#8a1c24] hover:bg-[#72171e] text-white font-bold px-6 py-2 rounded-xl text-xs w-full shadow-md">
+                حسناً ✓
+            </button>
+        </div>
+    </div>
+
+    <footer class="max-w-6xl mx-auto w-full text-center py-2 text-[11px] text-slate-600">
+        مجمع زايد التعليمي - السيوح • إشراف المديرة: أ. سعيدة الحمادي • تصميم (MIE): أ. علاء محمد أبوالحمد • بالمِيثاق نُبلّغ الآفاق
+    </footer>
+
+    <script>
+        let gameState = {
+            playerName: "بطل المستكشفين",
+            playerClass: "السادس / أ",
+            score: 0,
+            hintsLeft: 3,
+            currentStation: 1,
+            currentQuestionIndex: 0,
+            stationsCompleted: [false, false, false, false, false, false],
+            carPosition: 10
+        };
+
+        const studentsList = JSON.parse(localStorage.getItem('zayedComplexRaceFootball6')) || [
+            { name: "راشد محمد", class: "السادس / أ", score: 150, percentage: "100%", level: "أسطورة السباق واليقين 🏎️⚽" },
+            { name: "مريم أحمد", class: "الثامن / ب", score: 140, percentage: "95%", level: "فارس السباق 🌟" }
+        ];
+
+        const stationsData = {
+            1: {
+                type: "race",
+                title: "المحطة الأولى: سباق سورة السجدة",
+                badge: "سباق السيارات 🏎️",
+                hint: "راجع آيات سورة السجدة المتعلقة بوحدانية الله تعالى وعلمه وخلق الإنسان.",
+                questions: [
+                    { q: "ما الآية التي تدل على وحدانية الله تعالى في سورة السجدة؟", options: ["اللَّهُ الَّذِي خَلَقَ السَّمَوَاتِ وَالْأَرْضَ وَمَا بَيْنَهُمَا فِي سِتَّةِ أَيَّامٍ", "قُلْ يَتَوَفَّاكُمْ مَلَكُ الْمَوْتِ الَّذِي وُكِّلَ بِكُمْ", "لِتُنْذِرَ قَوْمًا مَا أَتَاهُمْ مِنْ نَذِيرٍ مِنْ قَبْلِكَ", "وَقَالُوا أَئِذَا ضَلَلْنَا فِي الْأَرْضِ"], correct: 0 },
+                    { q: "ما المقصود بكلمة «سُلَالَة» في قوله تعالى: {ثُمَّ جَعَلَ نَسْلَهُ مِنْ سُلَالَةٍ مِنْ مَاءٍ مَهِينٍ}؟", options: ["خلاصة الذهب", "خلاصة التمر", "خلاصة الكلام", "خلاصة النسل"], correct: 3 },
+                    { q: "ماذا يُطلق على الأقوام الذين عاشوا بين بعثة عيسى ومحمد عليهما السلام؟", options: ["العباسيون", "أهل الصُّفَّة", "الأمويون", "أهل الفترة"], correct: 3 },
+                    { q: "ما الترتيب الصحيح لأطوار خلق الإنسان؟", options: ["عَلَقَةٌ – نُطْفَةٌ – مُضْغَةٌ", "مُضْغَةٌ – عَلَقَةٌ – نُطْفَةٌ", "نُطْفَةٌ – مُضْغَةٌ – عَلَقَةٌ", "نُطْفَةٌ – عَلَقَةٌ – مُضْغَةٌ"], correct: 3 },
+                    { q: "ما الآية التي تدل على إحاطة علم الله تعالى بكل شيء؟", options: ["ذَلِكَ عَالِمُ الْغَيْبِ وَالشَّهَادَةِ الْعَزِيزُ الرَّحِيمُ", "ثُمَّ جَعَلَ نَسْلَهُ مِنْ سُلَالَةٍ مِنْ مَاءٍ مَهِينٍ", "قُلْ يَتَوَفَّاكُمْ مَلَكُ الْمَوْتِ الَّذِي وُكِّلَ بِكُمْ", "تَنْزِيلُ الْكِتَابِ لَا رَيْبَ فِيهِ مِنْ رَبِّ الْعَالَمِينَ"], correct: 0 }
+                ]
+            },
+            2: {
+                type: "football",
+                title: "المحطة الثانية: ركلة حسم السورة",
+                badge: "تحدي كرة القدم ⚽",
+                hint: "تأمل في دلالات الخلق والقرآن والنعم التي وهبها الله تعالى للإنسان.",
+                questions: [
+                    { q: "ما الفائدة الشرعية للتأمل في خلق السماوات والأرض؟", options: ["اليقين بوحدانية الله تعالى", "الاستمتاع بالنظر إليهما", "تمني السفر لرؤية البلدان الأخرى", "إدراك بُعد السماوات السبع عن الأرض"], correct: 0 },
+                    { q: "كيف توظف نعمة البصر في شكر الله تعالى؟", options: ["التأمل في مخلوقات الله تعالى", "اختلاس النظر إلى بيوت الجيران", "متابعة الأفلام غير الهادفة", "قراءة الكتب النافعة"], correct: [0,3] },
+                    { q: "أيٌّ من الخيارات يُعد من خصائص القرآن الكريم التي وردت في آيات الدرس؟", options: ["آخر معجزات النبي محمد ﷺ", "العجز عن الإتيان بمثله", "باقٍ إلى يوم القيامة", "القدرة على تلاوته وتجويده"], correct: [1,2] },
+                    { q: "لماذا افتُتحت سورة السجدة بالحروف المقطعة؟", options: ["لتحدي عرب قريش أن يأتوا بمثله", "دلالة على أنه تحدٍّ لآل فرعون أن يأتوا بمثله", "لتحدي قوم عاد وثمود أن يأتوا بمثله", "دلالة على إعجاز القرآن الكريم"], correct: [0,3] },
+                    { q: "كان مقدار الخلق في تقدير الله تعالى:", options: ["خمسة أيام", "ستة أيام", "سبعة أيام", "ثمانية أيام"], correct: 1 }
+                ]
+            },
+            3: {
+                type: "race",
+                title: "المحطة الثالثة: سباق خلق الإنسان",
+                badge: "سباق السيارات 🏎️",
+                hint: "راجع صفات علم العباد ومعنى كلمة «افتراه» في سياق سورة السجدة.",
+                questions: [
+                    { q: "ما صفات علم العباد؟", options: ["محدودة ومتغيرة", "مكتملة ومحيطة", "محدودة ومحيطة", "متغيرة ومكتملة"], correct: 0 },
+                    { q: "ما المقصود بكلمة «افْتَرَاهُ» في قوله تعالى: {أَمْ يَقُولُونَ افْتَرَاهُ بَلْ هُوَ الْحَقُّ مِنْ رَبِّكَ}؟", options: ["سمع القرآن من أحد البشر", "تلا القرآن على أحد من البشر", "اختلق القرآن من تلقاء نفسه", "قرأ على نفسه القرآن الكريم"], correct: 2 },
+                    { q: "كيف نحقق الشكر الواجب لله سبحانه وتعالى على ما أنعم به علينا من النعم؟", options: ["بأداء الواجبات واجتناب المحرمات", "بالمحافظة على النوافل", "بتجنب إيذاء الآخرين", "بذكر الله تعالى وحمده"], correct: [0,3] },
+                    { q: "ما دلالة قوله تعالى: {وَقَالُوا أَإِذَا ضَلَلْنَا فِي الْأَرْضِ أَإِنَّا لَفِي خَلْقٍ جَدِيدٍ}؟", options: ["التدبير والتقدير مع الخلق والتكوين", "دلائل وحدانية الله تعالى وقدرته", "حجة المكذبين في إنكار البعث بعد الموت", "الحكمة من البعث بعد الموت"], correct: 2 },
+                    { q: "ما معنى «نَاكِسُوا رُءُوسَهُمْ» في قوله تعالى: {وَلَوْ تَرَى إِذِ الْمُجْرِمُونَ نَاكِسُوا رُءُوسَهُمْ عِنْدَ رَبِّهِمْ}؟", options: ["خافضوها فرحًا وسرورًا", "رافعوها غرورًا وتكبرًا", "رافعوها ندمًا وحسرةً", "مطرقوها حياءً وندمًا"], correct: 3 }
+                ]
+            },
+            4: {
+                type: "football",
+                title: "المحطة الرابعة: نهائي البعث والقيامة",
+                badge: "تحدي كرة القدم ⚽",
+                hint: "الإنسان مسؤول عن سمعه وبصره وفؤاده، والبعث حق للحساب والجزاء.",
+                questions: [
+                    { q: "علام يدل قوله تعالى: {إِنَّ السَّمْعَ وَالْبَصَرَ وَالْفُؤَادَ كُلُّ أُولَٰئِكَ كَانَ عَنْهُ مَسْئُولًا}؟", options: ["أن الإنسان عليه أن يعتني بصحة سمعه وبصره", "يدل على أن الأعمى سيُسأل عن أقواله", "يدل على أن المؤمن وحده سيُسأل عن أعماله", "يدل على أن الإنسان سيُحاسب على أقواله وأفعاله"], correct: 3 },
+                    { q: "ما الحكمة من البعث بعد الموت؟", options: ["دك الجبال بحيث تصير ترابًا", "تبديل الأرض وما عليها", "محاسبة العباد على ما عملوا في الدنيا", "اشتعال البحار والمحيطات نارًا"], correct: 2 },
+                    { q: "ما الآية التي تثبت قدرة الله تعالى على بعث الناس يوم القيامة؟", options: ["وَقَالُوا أَئِذَا ضَلَلْنَا فِي الْأَرْضِ أَئِنَّا لَفِي خَلْقٍ جَدِيدٍ", "رَبَّنَا أَبْصَرْنَا وَسَمِعْنَا فَارْجِعْنَا نَعْمَلْ صَالِحًا", "قُلْ يَتَوَفَّاكُمْ مَلَكُ الْمَوْتِ الَّذِي وُكِّلَ بِكُمْ", "وَلَوْ تَرَى إِذِ الْمُجْرِمُونَ نَاكِسُوا رُءُوسَهُمْ"], correct: 0 },
+                    { q: "ما الآية التي توضّح حجة مشركي قريش في إنكار البعث يوم القيامة؟", options: ["وَلَوْ تَرَى إِذِ الْمُجْرِمُونَ نَاكِسُوا رُءُوسَهُمْ عِنْدَ رَبِّهِمْ", "ذَلِكَ عَالِمُ الْغَيْبِ وَالشَّهَادَةِ الْعَزِيزُ الرَّحِيمُ", "وَقَالُوا أَئِذَا ضَلَلْنَا فِي الْأَرْضِ أَئِنَّا لَفِي خَلْقٍ جَدِيدٍ", "ثُمَّ جَعَلَ نَسْلَهُ مِنْ سُلَالَةٍ مِنْ مَاءٍ مَهِينٍ"], correct: 2 }
+                ]
+            },
+            5: {
+                type: "puzzle",
+                title: "المحطة الخامسة: لغز الشكر والميثاق",
+                badge: "لغز الحقيقة 🧩",
+                hint: "تذكر معنى البعث وموقف المنكرين ومهمة الرسل عليهم السلام.",
+                questions: [
+                    { q: "ما المقصود بالبعث يوم القيامة؟", options: ["محاسبة الناس على أعمالهم", "سؤال الملكين بعد الموت", "خروج الموتى من القبور", "سوق الناس إلى أرض المحشر"], correct: 2 },
+                    { q: "ما موقف المنكرين للبعث بعد الموت في ضوء ما تعلمته من سورة السجدة؟", options: ["لا يتكلمون بشيء", "يتعجبون ويطلبون دخول الجنة", "يكابرون ويصرون على موقفهم", "يندمون ويطلبون الرجوع إلى الدنيا كي يعملوا صالحًا"], correct: 3 },
+                    { q: "على ماذا تقتصر مهمة الرسل عليهم السلام؟", options: ["التأثير والهداية", "حوار المنكرين", "قراءة الوحي", "التبشير والإنذار"], correct: 3 },
+                    { q: "ما معنى قولهم: «ضَلَلْنَا فِي الْأَرْضِ» الوارد في قوله تعالى: {وَقَالُوا أَئِذَا ضَلَلْنَا فِي الْأَرْضِ أَئِنَّا لَفِي خَلْقٍ جَدِيدٍ}؟", options: ["ضِعنا فيها وصرنا ترابًا", "وقعنا في الضلال واتبعناه", "تهنا فيها وانقطعت بنا السبل", "ضلت عقولنا عن الطريق الحق"], correct: 0 },
+                    { q: "قال تعالى: {وَقَالُوا أَئِذَا ضَلَلْنَا فِي الْأَرْضِ أَئِنَّا لَفِي خَلْقٍ جَدِيدٍ}. كلامهم في الآية يدل على:", options: ["تكذيب بالبعث مع الاستهزاء", "تصديق بالبعث مع الاستغراب", "تصديق بالبعث مع الاستبعاد", "استبعاد للبعث بعد الموت"], correct: [0,3] },
+                    { q: "كيف تتصرف لو وصلك خبر من أحد مواقع التواصل الاجتماعي مفاده أن القيامة ستقوم بعد شهر؟", options: ["أستفسر عن الخبر من أصحاب الموقع", "أصدق الخبر وأستعد له", "أُخبر أولياء أمري بالرسالة", "أتناقل الخبر بين أصدقائي"], correct: 2 },
+                    { q: "ما موقف الذين أنكروا البعث بعد الموت عند مجيء يوم القيامة؟", options: ["يقولون: ربنا زدنا عذابًا في الآخرة فوق عذابنا", "يقولون: لا ترجعنا إلى الدنيا كي لا نزيد أعمالنا السيئة", "يقولون: أرجعنا إلى الدنيا، نعمل عملًا صالحًا", "يقولون: ربنا أبصرنا ما وعدتنا من البعث"], correct: [2,3] },
+                    { q: "كيف توظف نعمة السمع في شكر الله تعالى؟", options: ["بالتنصت على الآخرين", "بالاستماع إلى الأدعية المفيدة", "بالإنصات إلى تلاوة القرآن الكريم", "بالاستماع إلى القصص والروايات"], correct: [1,2] }
+                ]
+            },
+            6: {
+                type: "puzzle",
+                title: "المحطة السادسة: تحدي الميثاق والإنجاز",
+                badge: "القلعة الختامية 🏆",
+                hint: "لا تصدق الأخبار غير الموثوقة عن الغيب؛ تعامل معها بالتحقق وعدم التناقل.",
+                questions: [
+                    { q: "كيف تتصرف لو وصلك خبر من أحد مواقع التواصل الاجتماعي مفاده أن القيامة ستقوم بعد شهر؟", options: ["أستفسر عن الخبر من أصحاب الموقع", "أصدق الخبر وأستعد له", "أُخبر أولياء أمري بالرسالة", "أتناقل الخبر بين أصدقائي"], correct: 2 },
+                    { q: "ما موقف الذين أنكروا البعث بعد الموت عند مجيء يوم القيامة؟", options: ["يقولون: ربنا زدنا عذابًا في الآخرة فوق عذابنا", "يقولون: لا ترجعنا إلى الدنيا كي لا نزيد أعمالنا السيئة", "يقولون: أرجعنا إلى الدنيا، نعمل عملًا صالحًا", "يقولون: ربنا أبصرنا ما وعدتنا من البعث"], correct: [2,3] },
+                    { q: "كيف توظف نعمة السمع في شكر الله تعالى؟", options: ["بالتنصت على الآخرين", "بالاستماع إلى الأدعية المفيدة", "بالإنصات إلى تلاوة القرآن الكريم", "بالاستماع إلى القصص والروايات"], correct: [1,2] },
+                    { q: "ما صفات علم العباد؟", options: ["محدودة", "متغيرة", "مكتملة", "محيطة"], correct: [0,1] }
+                ]
+            }
+        };
+
+        function showModal(title, message, icon = "🌟") {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMessage').innerText = message;
+            document.getElementById('modalIcon').innerText = icon;
+            document.getElementById('customModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+
+        function showScreen(screenId) {
+            ['screen-welcome', 'screen-map', 'screen-game-arena', 'screen-castle', 'screen-victory', 'screen-teacher'].forEach(s => {
+                document.getElementById(s).classList.add('hidden');
+            });
+            document.getElementById(screenId).classList.remove('hidden');
+            if(screenId === 'screen-teacher') renderTeacherTable();
+        }
+
+        function startGame() {
+            const name = document.getElementById('inputStudentName').value.trim();
+            const cls = document.getElementById('inputStudentClass').value.trim();
+            if(name) gameState.playerName = name;
+            if(cls) gameState.playerClass = cls;
+
+            document.getElementById('headerName').innerText = gameState.playerName;
+            showScreen('screen-map');
+            updateMapUI();
+        }
+
+        function returnToMap() {
+            showScreen('screen-map');
+            updateMapUI();
+        }
+
+        function enterStation(stationNum) {
+            if(stationNum > 1 && !gameState.stationsCompleted[stationNum - 2] && stationNum <= 5) {
+                showModal("محطة مغلقة", "يجب إكمال المحطة السابقة أولاً لفتح هذه المحطة!", "🔒");
+                return;
+            }
+
+            if(stationNum === 6) {
+                showScreen('screen-castle');
+                return;
+            }
+
+            gameState.currentStation = stationNum;
+            gameState.currentQuestionIndex = 0;
+            loadStationArena();
+            showScreen('screen-game-arena');
+        }
+
+        function loadStationArena() {
+            const station = stationsData[gameState.currentStation];
+            document.getElementById('arenaBadge').innerText = station.badge;
+            document.getElementById('arenaTitle').innerText = station.title;
+            document.getElementById('arenaHintBox').classList.add('hidden');
+
+            const visualUI = document.getElementById('stationVisualSimulation');
+            visualUI.innerHTML = '';
+
+            if(station.type === 'race') {
+                visualUI.innerHTML = `
+                    <div class="race-track p-3 flex flex-col justify-between">
+                        <div class="text-[10px] text-[#8a1c24] font-bold flex justify-between">
+                            <span>🚦 خط الانطلاق</span>
+                            <span>🏁 خط النهاية (العلامة الكبرى)</span>
+                        </div>
+                        <div class="race-car" id="carObject" style="left: ${gameState.carPosition}%;">🏎️</div>
+                        <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                            <div class="bg-[#8a1c24] h-full transition-all duration-300" id="carProgressBar" style="width: ${gameState.carPosition}%"></div>
+                        </div>
+                    </div>
+                `;
+            } else if(station.type === 'football') {
+                visualUI.innerHTML = `
+                    <div class="bg-emerald-50 border border-emerald-300 p-4 rounded-2xl text-center">
+                        <p class="text-xs text-emerald-800 mb-2 font-bold">⚽ ملعب الحسم الكروي — أجب بدقة لتسديد الكرة في الشباك!</p>
+                        <div class="text-3xl animate-bounce">🥅 ⚽ 🏃‍♂️</div>
+                    </div>
+                `;
+            } else {
+                visualUI.innerHTML = `
+                    <div class="bg-amber-50 p-4 rounded-2xl border border-amber-300 text-center">
+                        <p class="text-xs text-amber-900 mb-1 font-bold">🧩 لغز الشفرة وجمع القطع المعرفية</p>
+                    </div>
+                `;
+            }
+
+            loadArenaQuestion();
+        }
+
+        let multiSelected = [];
+
+        function loadArenaQuestion() {
+            const station = stationsData[gameState.currentStation];
+            const qData = station.questions[gameState.currentQuestionIndex];
+            multiSelected = [];
+
+            document.getElementById('arenaQuestionText').innerText = `س ${gameState.currentQuestionIndex + 1}: ${qData.q}`;
+            document.getElementById('arenaProgress').innerText = `السؤال ${gameState.currentQuestionIndex + 1} من ${station.questions.length}`;
+
+            const optsContainer = document.getElementById('arenaOptionsContainer');
+            optsContainer.innerHTML = '';
+            const multi = Array.isArray(qData.correct);
+
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-right bg-white border border-slate-200 hover:border-[#8a1c24] p-3.5 rounded-xl text-xs sm:text-sm text-slate-800 transition font-medium shadow-sm";
+                btn.innerText = (multi ? '☐ ' : '') + opt;
+                btn.dataset.index = idx;
+                btn.onclick = () => multi ? toggleMultiAnswer(idx, btn) : checkArenaAnswer(idx, btn);
+                optsContainer.appendChild(btn);
+            });
+
+            if(multi) {
+                const submit = document.createElement('button');
+                submit.id = 'multiSubmitBtn';
+                submit.className = "mt-4 bg-[#8a1c24] hover:bg-[#72171e] text-white font-black px-6 py-2 rounded-xl text-xs shadow-md";
+                submit.innerText = 'تأكيد الإجابات';
+                submit.onclick = submitMultiAnswer;
+                optsContainer.appendChild(submit);
+            }
+
+            document.getElementById('arenaNextBtn').classList.add('hidden');
+        }
+
+        function toggleMultiAnswer(idx, btn) {
+            if(btn.disabled) return;
+            if(multiSelected.includes(idx)) {
+                multiSelected = multiSelected.filter(i => i !== idx);
+                btn.innerText = '☐ ' + btn.innerText.replace(/^☑ |^☐ /, '');
+                btn.classList.remove('border-[#8a1c24]', 'bg-[#8a1c24]/10');
+            } else {
+                multiSelected.push(idx);
+                btn.innerText = '☑ ' + btn.innerText.replace(/^☑ |^☐ /, '');
+                btn.classList.add('border-[#8a1c24]', 'bg-[#8a1c24]/10');
+            }
+        }
+
+        function submitMultiAnswer() {
+            const station = stationsData[gameState.currentStation];
+            const qData = station.questions[gameState.currentQuestionIndex];
+            const allOpts = document.querySelectorAll('#arenaOptionsContainer button[data-index]');
+            const expected = [...qData.correct].sort((a,b) => a-b);
+            const chosen = [...multiSelected].sort((a,b) => a-b);
+            const isCorrect = expected.length === chosen.length && expected.every((v,i) => v === chosen[i]);
+            allOpts.forEach(b => b.disabled = true);
+
+            if(isCorrect) {
+                gameState.score += 25;
+                chosen.forEach(i => allOpts[i].className = "w-full text-right bg-emerald-100 border border-emerald-500 p-3.5 rounded-xl text-xs sm:text-sm text-emerald-800 font-bold");
+                updateHeaderScore();
+                showModal("إجابة صحيحة!", "أحسنت! حصلت على 25 نقطة.", "🏆");
+                if(gameState.currentQuestionIndex < station.questions.length - 1) {
+                    document.getElementById('arenaNextBtn').classList.remove('hidden');
+                } else {
+                    completeCurrentStation();
+                }
+            } else {
+                expected.forEach(i => allOpts[i].className = "w-full text-right bg-emerald-100 border border-emerald-500 p-3.5 rounded-xl text-xs sm:text-sm text-emerald-800 font-bold");
+                multiSelected.forEach(i => { if(!expected.includes(i)) allOpts[i].className = "w-full text-right bg-rose-100 border border-rose-500 p-3.5 rounded-xl text-xs sm:text-sm text-rose-800 font-bold"; });
+                showModal("إجابة غير دقيقة", "راجع الاختيارات الصحيحة واستعد للمحطة التالية.", "❌");
+                setTimeout(() => returnToMap(), 1000);
+            }
+        }
+
+        function checkArenaAnswer(selectedIdx, btnElement) {
+            const station = stationsData[gameState.currentStation];
+            const qData = station.questions[gameState.currentQuestionIndex];
+            const allOpts = document.querySelectorAll('#arenaOptionsContainer button[data-index]');
+
+            allOpts.forEach(b => b.disabled = true);
+
+            if(selectedIdx === qData.correct) {
+                btnElement.className = "w-full text-right bg-emerald-100 border border-emerald-500 p-3.5 rounded-xl text-xs sm:text-sm text-emerald-800 font-bold";
+                gameState.score += 25;
+                updateHeaderScore();
+
+                if(station.type === 'race') {
+                    gameState.carPosition = Math.min(90, gameState.carPosition + 20);
+                    const carObj = document.getElementById('carObject');
+                    const carBar = document.getElementById('carProgressBar');
+                    if(carObj) carObj.style.left = `${gameState.carPosition}%`;
+                    if(carBar) carBar.style.width = `${gameState.carPosition}%`;
+                }
+
+                if(gameState.currentQuestionIndex < station.questions.length - 1) {
+                    document.getElementById('arenaNextBtn').classList.remove('hidden');
+                } else {
+                    completeCurrentStation();
+                }
+            } else {
+                btnElement.className = "w-full text-right bg-rose-100 border border-rose-500 p-3.5 rounded-xl text-xs sm:text-sm text-rose-800 font-bold";
+                allOpts[qData.correct].className = "w-full text-right bg-emerald-100 border border-emerald-500 p-3.5 rounded-xl text-xs sm:text-sm text-emerald-800 font-bold";
+                showModal("إجابة غير دقيقة", "راجع محتوى الدرس جيدًا واستعد للمحاولة القادمة.", "❌");
+                setTimeout(() => returnToMap(), 1000);
+            }
+        }
+
+        function nextArenaStep() {
+            gameState.currentQuestionIndex++;
+            loadArenaQuestion();
+        }
+
+        function completeCurrentStation() {
+            const stIdx = gameState.currentStation - 1;
+            if(!gameState.stationsCompleted[stIdx]) {
+                gameState.stationsCompleted[stIdx] = true;
+                gameState.score += 30;
+                updateHeaderScore();
+            }
+
+            setTimeout(() => {
+                showModal("إنجاز رائع!", `🎉 أتممت ${stationsData[gameState.currentStation].title} بنجاح وتفوق!`, "🏆");
+                if(gameState.currentStation === 5) {
+                    gameState.stationsCompleted[5] = true;
+                }
+                returnToMap();
+            }, 600);
+        }
+
+        function useHintInGame() {
+            if(gameState.hintsLeft <= 0) {
+                showModal("نفدت التلميحات", "لقد استهلكت جميع التلميحات الـ 3 المتاحة.", "💡");
+                return;
+            }
+            gameState.hintsLeft--;
+            document.getElementById('headerHints').innerText = gameState.hintsLeft;
+            document.getElementById('hintCountSpan').innerText = gameState.hintsLeft;
+
+            const station = stationsData[gameState.currentStation];
+            document.getElementById('arenaHintText').innerText = station.hint;
+            document.getElementById('arenaHintBox').classList.remove('hidden');
+        }
+
+        function updateHeaderScore() {
+            document.getElementById('headerScore').innerText = gameState.score;
+        }
+
+        function updateMapUI() {
+            let completedCount = 0;
+            for(let i = 1; i <= 6; i++) {
+                const card = document.getElementById(`stationCard-${i}`);
+                const status = document.getElementById(`status-${i}`);
+
+                if(gameState.stationsCompleted[i - 1] || (i === 6 && gameState.stationsCompleted[4])) {
+                    card.classList.remove('opacity-60');
+                    if(i === 6) {
+                        status.innerText = "مفتوحة القلعة 🔓";
+                        status.className = "text-emerald-600 font-bold";
+                        card.classList.add('active-station');
+                    } else {
+                        status.innerText = "مكتملة ✓";
+                        status.className = "text-emerald-600 font-bold";
+                    }
+                    completedCount++;
+                } else if(i === 1 || gameState.stationsCompleted[i - 2]) {
+                    card.classList.remove('opacity-60');
+                    card.classList.add('active-station');
+                    status.innerText = "متاحة للتحدي 🔓";
+                    status.className = "text-[#8a1c24] font-bold";
+                } else {
+                    card.classList.add('opacity-60');
+                    status.innerText = "مغلقة 🔒";
+                    status.className = "text-slate-400 font-bold";
+                }
+            }
+
+            const perc = Math.round((completedCount / 6) * 100);
+            document.getElementById('mapProgressBar').style.width = `${perc}%`;
+        }
+
+        function unlockCastle() {
+            document.getElementById('certName').innerText = gameState.playerName;
+            document.getElementById('certScore').innerText = gameState.score;
+            showScreen('screen-victory');
+        }
+
+        function renderTeacherTable() {
+            const tbody = document.getElementById('teacherTableBody');
+            tbody.innerHTML = '';
+            document.getElementById('teacherTotalStudents').innerText = studentsList.length;
+
+            studentsList.forEach((st, idx) => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-slate-200 hover:bg-slate-50 transition";
+                tr.innerHTML = `
+                    <td class="p-3 text-[#8a1c24] font-bold">${idx + 1}</td>
+                    <td class="p-3 font-bold text-slate-800">${st.name}</td>
+                    <td class="p-3">${st.class}</td>
+                    <td class="p-3 font-black text-[#8a1c24]">${st.score} درجة</td>
+                    <td class="p-3 text-emerald-600 font-bold">${st.percentage}</td>
+                    <td class="p-3 font-bold text-[#8a1c24]">${st.level}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function showTeacherDashboard() {
+            showScreen('screen-teacher');
+        }
+    </script>
+</body>
+</html>
